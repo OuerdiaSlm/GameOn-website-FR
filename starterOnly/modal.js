@@ -45,6 +45,8 @@ document.getElementById('form').addEventListener('submit', (event) => {
 function validate() {
   let prenom = document.getElementById("first").value
   let nom = document.getElementById('last').value
+  let email = document.getElementById('email').value
+  
 
   let error = 0
   if(prenom.length < 2) {
@@ -67,18 +69,33 @@ function validate() {
     document.getElementById ('errorLast').textContent =''
     last.style.border="2px solid green";
   }
-   if (prenom.length == 0) {
+  if (prenom.length == 0) {
     error++
     let errorSpan = document.getElementById('errorFirst')
     errorSpan.textContent = 'Le prenom est un champ obligatoire. Veuillez le renseigner'
     first.style.border="2px solid red";
-   }
+  }
 
-   if (nom.length == 0) {
+  if (nom.length == 0) {
     error++
     let errorSpan = document.getElementById('errorLast')
     errorSpan.textContent = 'Le nom est un champ obligatoire. Veuillez le renseigner'
     first.style.border="2px solid red";
-   }
+  }
 
 
+  if(email.length < 1 || !validateEmail(email)) {
+    error++
+     let errorSpan = document.getElementById('errorEmail')
+    errorSpan.textContent = 'Veuillez respecter le format email : exemple@domaine.com'
+    styleEmail.style.border="2px solid red ";
+  } else {
+    document.getElementById('errorEmail').textContent=''
+    styleEmail.style.border="2px solid green ";
+  }
+  if (email.length == 0) {
+    error++
+    let errorSpan = document.getElementById('errorEmail')
+    errorSpan.textContent = 'Le champ Email est obligatoire. Veuillez le renseigner'
+    first.style.border="2px solid red";
+  }
