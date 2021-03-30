@@ -37,6 +37,7 @@ function closeModal() {
 
 
 
+// 
 document.getElementById('form').addEventListener('submit', (event) => {
   event.preventDefault()
   validate()
@@ -46,7 +47,8 @@ function validate() {
   let prenom = document.getElementById("first").value
   let nom = document.getElementById('last').value
   let email = document.getElementById('email').value
-
+  let styleEmail = document.getElementById("email");
+  let birthdate = document.getElementById("birthdate").value
 
   let error = 0
   if(prenom.length < 2) {
@@ -69,22 +71,22 @@ function validate() {
     document.getElementById ('errorLast').textContent =''
     last.style.border="2px solid green";
   }
-  if (prenom.length == 0) {
+   if (prenom.length == 0) {
     error++
     let errorSpan = document.getElementById('errorFirst')
     errorSpan.textContent = 'Le prenom est un champ obligatoire. Veuillez le renseigner'
     first.style.border="2px solid red";
-  }
+   }
 
-  if (nom.length == 0) {
+   if (nom.length == 0) {
     error++
     let errorSpan = document.getElementById('errorLast')
     errorSpan.textContent = 'Le nom est un champ obligatoire. Veuillez le renseigner'
     first.style.border="2px solid red";
-  }
+   }
 
 
-  if(email.length < 1 || !validateEmail(email)) {
+   if(email.length < 1 || !validateEmail(email)) {
     error++
      let errorSpan = document.getElementById('errorEmail')
     errorSpan.textContent = 'Veuillez respecter le format email : exemple@domaine.com'
@@ -98,6 +100,39 @@ function validate() {
     let errorSpan = document.getElementById('errorEmail')
     errorSpan.textContent = 'Le champ Email est obligatoire. Veuillez le renseigner'
     first.style.border="2px solid red";
+   }
+
+
+   if (birthdate.value == 0) {
+    error++
+    let errorSpan = document.getElementById('errorBirthdate')
+    errorBirthdate.textContent='Le champ Anniversaire est obligatoire. Veuillez le renseigner'
+    birthdate.style.border="2px solid red";
+   }
+
+
+   if (quantity.value == 0) {
+    error++
+    let errorSpan = document.getElementById('errorQuantity')
+    errorBirthdate.textContent='Ce champ est obligatoire. Veuillez le renseigner'
+    birthdate.style.border="2px solid red";
+   }
+
+
+
+
+
+
+
+  if(error == 0) {
+    // Afficher un message de succès et pas sous forme d'alert
   }
+}
+
+function validateEmail(mail) 
+{
+  return (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail))
 
 }
+
+
