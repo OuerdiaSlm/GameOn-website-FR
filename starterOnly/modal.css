@@ -14,7 +14,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -24,6 +23,11 @@ body {
 p {
   margin-bottom: 0;
   padding: 0.5vw;
+}
+
+.img {
+  width: auto;
+  height: auto;
 }
 
 img {
@@ -235,9 +239,10 @@ input[data-error]::after {
 .checkbox-label,
 .checkbox2-label {
   position: relative;
-  margin-left: 36px;
-  font-size: 12px;
-  font-weight: normal;
+    margin-left: 6px;
+    margin-right: 20px;
+    font-size: 12px;
+    font-weight: normal;
 }
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
@@ -269,9 +274,18 @@ input[data-error]::after {
   transition: 0.3s;
   opacity: 0;
 }
+
 .checkbox-input {
-  display: none;
+  opacity: 0;
+  /*display: none;*/
 }
+
+
+.error{
+  color:red;
+  font-size:0.6em;
+}
+
 .checkbox-input:checked + .checkbox-label .checkbox-icon::after,
 .checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
   opacity: 1;
