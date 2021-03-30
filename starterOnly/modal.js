@@ -37,3 +37,48 @@ function closeModal() {
 
 
 
+document.getElementById('form').addEventListener('submit', (event) => {
+  event.preventDefault()
+  validate()
+})
+
+function validate() {
+  let prenom = document.getElementById("first").value
+  let nom = document.getElementById('last').value
+
+  let error = 0
+  if(prenom.length < 2) {
+    error++
+    let errorSpan = document.getElementById('errorFirst')
+    errorSpan.textContent = 'Le prénom fait moins de 2 caractères'
+    first.style.border="2px solid red";
+  } else {
+    document.getElementById('errorFirst').textContent = ''
+    first.style.border="2px solid green";
+  }
+
+
+  if (nom.length < 2) {
+    error++
+    let errorSpan = document.getElementById('errorLast')
+    errorSpan.textContent = 'Le prénom fait moins de 2 caractères'
+    last.style.border="2px solid red";
+  } else {
+    document.getElementById ('errorLast').textContent =''
+    last.style.border="2px solid green";
+  }
+   if (prenom.length == 0) {
+    error++
+    let errorSpan = document.getElementById('errorFirst')
+    errorSpan.textContent = 'Le prenom est un champ obligatoire. Veuillez le renseigner'
+    first.style.border="2px solid red";
+   }
+
+   if (nom.length == 0) {
+    error++
+    let errorSpan = document.getElementById('errorLast')
+    errorSpan.textContent = 'Le nom est un champ obligatoire. Veuillez le renseigner'
+    first.style.border="2px solid red";
+   }
+
+
