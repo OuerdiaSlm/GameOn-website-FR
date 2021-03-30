@@ -46,7 +46,7 @@ function validate() {
   let prenom = document.getElementById("first").value
   let nom = document.getElementById('last').value
   let email = document.getElementById('email').value
-  
+
 
   let error = 0
   if(prenom.length < 2) {
@@ -99,3 +99,5 @@ function validate() {
     errorSpan.textContent = 'Le champ Email est obligatoire. Veuillez le renseigner'
     first.style.border="2px solid red";
   }
+
+}
