@@ -48,7 +48,9 @@ function validate() {
   let nom = document.getElementById('last').value
   let email = document.getElementById('email').value
   let styleEmail = document.getElementById("email");
-  let birthdate = document.getElementById("birthdate").value
+  let birthdate = document.getElementById("birthdate")
+  let quantity = document.getElementById('quantity')
+  let loca = document.getElementById('loca')
 
   let error = 0
   if(prenom.length < 2) {
@@ -106,17 +108,27 @@ function validate() {
    if (birthdate.value == 0) {
     error++
     let errorSpan = document.getElementById('errorBirthdate')
-    errorBirthdate.textContent='Le champ Anniversaire est obligatoire. Veuillez le renseigner'
+    errorBirthdate.textContent='Le champ anniversaire est obligatoire. Veuillez le renseigner'
     birthdate.style.border="2px solid red";
+   } else {
+    document.getElementById('errorBirthdate').textContent=''
+    birthdate.style.border="2px solid green ";
    }
 
 
    if (quantity.value == 0) {
     error++
     let errorSpan = document.getElementById('errorQuantity')
-    errorBirthdate.textContent='Ce champ est obligatoire. Veuillez le renseigner'
-    birthdate.style.border="2px solid red";
+    errorQuantity.textContent='Ce champ est obligatoire. Veuillez entrer un nombre'
+    quantity.style.border="2px solid red";
+   } else {
+    document.getElementById('errorQuantity').textContent=''
+    quantity.style.border="2px solid green ";
    }
+
+
+
+
 
 
 
