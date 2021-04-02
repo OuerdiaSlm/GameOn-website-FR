@@ -127,6 +127,16 @@ function validate() {
    }
 
 
+   for(let i=0; i<loca.children.length; i++){
+    if(loca.children[i].checked){
+      let errorSpan = document.getElementById('loca')
+      errorLoca.textContent='';
+    } else {
+      errorLoca.textContent='Un de ces choix doit etre selectionné';
+    }
+  }
+
+
 
 
 
