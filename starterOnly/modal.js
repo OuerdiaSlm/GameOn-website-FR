@@ -51,6 +51,7 @@ function validate() {
   let birthdate = document.getElementById("birthdate")
   let quantity = document.getElementById('quantity')
   let loca = document.getElementById('loca')
+  let checkbox1 = document.getElementById('checkbox1')
 
   let error = 0
   if(prenom.length < 2) {
@@ -73,19 +74,6 @@ function validate() {
     document.getElementById ('errorLast').textContent =''
     last.style.border="2px solid green";
   }
-   if (prenom.length == 0) {
-    error++
-    let errorSpan = document.getElementById('errorFirst')
-    errorSpan.textContent = 'Le prenom est un champ obligatoire. Veuillez le renseigner'
-    first.style.border="2px solid red";
-   }
-
-   if (nom.length == 0) {
-    error++
-    let errorSpan = document.getElementById('errorLast')
-    errorSpan.textContent = 'Le nom est un champ obligatoire. Veuillez le renseigner'
-    first.style.border="2px solid red";
-   }
 
 
    if(email.length < 1 || !validateEmail(email)) {
@@ -97,12 +85,6 @@ function validate() {
     document.getElementById('errorEmail').textContent=''
     styleEmail.style.border="2px solid green ";
   }
-  if (email.length == 0) {
-    error++
-    let errorSpan = document.getElementById('errorEmail')
-    errorSpan.textContent = 'Le champ Email est obligatoire. Veuillez le renseigner'
-    first.style.border="2px solid red";
-   }
 
 
    if (birthdate.value == 0) {
@@ -116,7 +98,7 @@ function validate() {
    }
 
 
-   if (quantity.value == 0) {
+   if (quantity.value == 0 || !Number(quantity.value)) {
     error++
     let errorSpan = document.getElementById('errorQuantity')
     errorQuantity.textContent='Ce champ est obligatoire. Veuillez entrer un nombre'
@@ -126,14 +108,27 @@ function validate() {
     quantity.style.border="2px solid green ";
    }
 
-
+   let isChecked = 0
+  
    for(let i=0; i<loca.children.length; i++){
     if(loca.children[i].checked){
-      let errorSpan = document.getElementById('loca')
-      errorLoca.textContent='';
-    } else {
-      errorLoca.textContent='Un de ces choix doit etre selectionné';
+      isChecked++
     }
+  }
+  if (isChecked == 0) {
+    let errorLoca = document.getElementById('errorLoca')
+    errorLoca.textContent= "Il faut cocher au moin un evenement"
+  } else {
+    document.getElementById('errorLoca').textContent=""
+  }
+
+  
+  if (!checkbox1.checked) {
+    error++
+    let errorConditions = document.getElementById('errorConditions')
+    errorConditions.textContent='Il faut accepter les conditions génerales'
+  } else {
+    document.getElementById('errorConditions').textContent='';
   }
 
 
@@ -145,9 +140,10 @@ function validate() {
 
 
 
-
   if(error == 0) {
-    // Afficher un message de succès et pas sous forme d'alert
+    validation.style.display="flex";
+  } else {
+    validation.style.display="none";
   }
 }
 
