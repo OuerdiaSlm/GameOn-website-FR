@@ -37,12 +37,13 @@ function closeModal() {
 
 
 
-// 
+// Evenement d'envoie du formulaire 
 document.getElementById('form').addEventListener('submit', (event) => {
   event.preventDefault()
   validate()
 })
 
+// Verification des donnèes formulaire
 function validate() {
   let prenom = document.getElementById("first").value
   let nom = document.getElementById('last').value
@@ -53,6 +54,8 @@ function validate() {
   let loca = document.getElementById('loca')
   let checkbox1 = document.getElementById('checkbox1')
 
+  // Gestion des erreurs 
+  // conditions prenom
   let error = 0
   if(prenom.length < 2) {
     error++
@@ -64,7 +67,7 @@ function validate() {
     first.style.border="2px solid green";
   }
 
-
+  // Condition nom
   if (nom.length < 2) {
     error++
     let errorSpan = document.getElementById('errorLast')
@@ -75,7 +78,7 @@ function validate() {
     last.style.border="2px solid green";
   }
 
-
+  // Condition email
    if(email.length < 1 || !validateEmail(email)) {
     error++
      let errorSpan = document.getElementById('errorEmail')
@@ -86,7 +89,7 @@ function validate() {
     styleEmail.style.border="2px solid green ";
   }
 
-
+  // Condition date de naissance
    if (birthdate.value == 0) {
     error++
     let errorSpan = document.getElementById('errorBirthdate')
@@ -97,7 +100,7 @@ function validate() {
     birthdate.style.border="2px solid green ";
    }
 
-
+  // Condition nombre de fois evenment
    if (quantity.value == 0 || !Number(quantity.value)) {
     error++
     let errorSpan = document.getElementById('errorQuantity')
@@ -108,6 +111,7 @@ function validate() {
     quantity.style.border="2px solid green ";
    }
 
+  // Condition radio evenement
    let isChecked = 0
   
    for(let i=0; i<loca.children.length; i++){
@@ -122,7 +126,7 @@ function validate() {
     document.getElementById('errorLoca').textContent=""
   }
 
-  
+  // Condition generales
   if (!checkbox1.checked) {
     error++
     let errorConditions = document.getElementById('errorConditions')
@@ -134,19 +138,15 @@ function validate() {
 
 
 
-
-
-
-
-
-
+  // Condition en cas d'erreur d'envoie du formulaire, apparition du message de validation
   if(error == 0) {
-    validation.style.display="flex";
-  } else {
-    validation.style.display="none";
+      validation.style.display="flex";
+    } else {
+      validation.style.display="none";
+    }
   }
-}
 
+// Condition email regex
 function validateEmail(mail) 
 {
   return (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail))
