@@ -131,8 +131,10 @@ function validate() {
     error++
     let errorConditions = document.getElementById('errorConditions')
     errorConditions.textContent='Il faut accepter les conditions génerales'
+    document.getElementById('brr').style.display="block";
   } else {
     document.getElementById('errorConditions').textContent='';
+    document.getElementById('brr').style.display="none";
   }
 
 

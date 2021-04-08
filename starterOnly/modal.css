@@ -550,6 +550,10 @@ footer {
   animation-name:apparitionValidation;
 }
 
+#brr {
+  display: none;
+}
+
 @keyframes apparitionValidation {
   0% {
     opacity: 0;
