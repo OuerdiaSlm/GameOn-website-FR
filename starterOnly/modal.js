@@ -138,11 +138,9 @@ function validate() {
   }
 
 
-
-
-  // Condition en cas d'erreur d'envoie du formulaire, apparition du message de validation
+  // Condition d'apparition du message de validation si aucune erreur est presente
   if(error == 0) {
-      validation.style.display="flex";
+      validation.style.display="block";
     } else {
       validation.style.display="none";
     }
